@@ -1,29 +1,30 @@
-<php
+<?php
+    $total_Rs = 10;
+    echo "Total Rs : ". $total_Rs."<br>";
+    $coin100 = floor($total_Rs/100);
+    $r = $total_Rs%100;
 
-$amt = 500;
-$n_100 = 0;
-$n_50 = 0;
-$n_20 = 0;
-$n_10 = 0;
-$n_5 = 0;
-$n_2 = 0;
-if $amt >=100;
-$n_100 = $amt / 100;
-$amt = $amt- $n_100*100;
-if $amt >50;
-$amt= $amt - $n_50 * 50;
-if $amt >20;
-$amt= $amt - $n_20 * 20;
-if $amt >10;
-$amt= $amt - $n_10 * 10;
-if $amt >5;
-$amt= $amt - $n_5 * 5;
-if $amt >2;
-$amt= $amt - $n_2 * 2;
+    $coin50 = floor($r/50);
+    $r = $r%50;
+    
+    $coin20 = floor($r/20);
+    $r = $r%20;
 
-echo "100 = ".$n_100;
+    $coin10 = floor($r/10);
+    $r = $r%10;
 
+    $coin5 = floor($r/5);
+    $r = $r%5;
 
+    $coin2 = floor($r/2);
+    $r = $r%2;
 
+    $coinsof1 = $r;
 
+    echo "<br>Coins of 100 : ".$coin100."<br>";
+    echo "Coins of 50 : ".$coin50."<br>";
+    echo "Coins of 20 : ".$coin20."<br>";
+    echo "Coins of 10 : ".$coin10."<br>";
+    echo "Coins of 5 : ".$coin5."<br>";
+    echo "Coins of 2 : ".$coin2."<br>";
 ?>

@@ -20,7 +20,7 @@ function Palindrome($arr){
     }
 }
 
-$arr = array(5,6,7,8,7,6,5);
+$arr = array(5,6,7,8,7,6,5);    
 echo "Array Elements: ";
 foreach($arr as $n){
     echo " ",$n;

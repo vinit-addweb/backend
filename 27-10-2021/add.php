@@ -1,7 +1,7 @@
 <html>
 <body>
 <form method="get">
-First Name: <input type="text" name="val1">  <br />
+First Name: <input type="text" name="val1"> <br />
 
 Last Name: <input type="text" name="val2" />
 <input type="submit" value="add" name="Add"/>

@@ -4,10 +4,4 @@
 ?>
 
 
-<?php  
-if(!isset($_COOKIE["name"])) {  
-    echo "Sorry, cookie is not found!";  
-} else {  
-    echo "<br/>Cookie Value: " . $_COOKIE["name"];  
-}  
-?> 
+

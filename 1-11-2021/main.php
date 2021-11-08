@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 
-$conn = mysqli_connect("localhost","root","","College");
+$conn = mysqli_connect("localhost","root","","college");
 ?>

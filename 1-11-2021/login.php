@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,11 +36,13 @@
     width: 100%;
     margin-top: 20px;
 }
+
+    
     </style>
     <title>Login page</title>
 </head>
 <body>
-   
+
 
     <div class="container-fluid">
    
@@ -59,7 +63,7 @@
   </div>
   <button id="btn" name="login" value="login" class="btn btn-primary btn-block"> Submit</button>
   <!-- <button type="submit" class="btn btn-primary btn-block" name="login" value="login">Login</button> -->
-  <button type="submit" name="signup" class="btn btn-primary btn-block">Signup</button>
+  <input type="submit" name="signup" class="btn btn-primary btn-block" value="Signup">  </input>
 </form>
         </div>
 
@@ -69,7 +73,7 @@
 </html>
 <?php
 include 'main.php';
-session_start();
+
 if(isset($_POST['login'])){
    $semail=$_POST['email'];
    $spassword=$_POST['pass'];
@@ -79,13 +83,11 @@ if(isset($_POST['login'])){
  // echo $sql;
    $query =mysqli_query($conn,$sql)or die("Error in query");
    $rows=mysqli_num_rows($query);
-   
-
-  
 
    if($rows>0){
+      session_start();
        //echo "Login Success";
-       $_SESSION['email']=$_POST['email'];
+       $_SESSION['email']=$semail;
        header('Location:dash.php');
    
     }
@@ -96,9 +98,10 @@ if(isset($_POST['login'])){
 
    }
 
-   mysqli_close($conn);
+   
 }
 elseif(isset($_POST['signup'])) {
   header('Location:insert.php');
 }
-?>
+
+?>  

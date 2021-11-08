@@ -13,6 +13,7 @@
              padding:30px;
              border-radius:10px;
              box-shadow: 0px 0px 10px 0px #000;
+             margin-top: 100px;
 
          }
          .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
@@ -62,10 +63,7 @@
      <h5>Signup</h5>
 </div>
 
-<div class="mb-3">
-<label for="exampleInputPassword1" class="form-label">Id</label>
-<input type="text" name="id" class="form-control" placeholder="Enter your Id">
-</div>
+
 
 
 <div class="mb-3">
@@ -87,7 +85,7 @@
 <label for="exampleInputPassword1" class="form-label">Password</label>
 <input type="password" name="pass" class="form-control" placeholder="*************">
 </div>
-<label for="floatingTextarea">Address</label>
+<label for="floatingTextarea">City</label>
 <div class="form-floating">
 <!-- textarea< class="form-control heightt" placeholder="Type from here..." name="add"></textarea>
 <label for="floatingTextarea">Address</label>
@@ -117,15 +115,15 @@ if(isset($_POST['insert']))
     $saddress=$_POST['add'];
 
     error_reporting(0);
-    //$conn = mysqli_connect("localhost","root","","College") or die("Error in Connection");
-    $q = mysqli_query($conn,"Insert into Students(Id,Name,Mobile,Email,Password,Address)
-    
-    values($sid,'$sname',$smobile,'$semail','$spassword','$saddress')") or die("Error in query");
-    echo "$q";
+    //  $conn = mysqli_connect("localhost","root","","College") or die("Error in Connection");
+    $sql = "Insert into Students (Id,Name,Mobile,Email,Password,Address) values (NULL,'$sname',$smobile,'$semail','$spassword','$saddress')";
+   echo $sql;
+    $q = mysqli_query($conn,$sql) or die("Error in query");
+   
   if($q)
 {
     echo "data Inserted";
-    header('Location:dash.php');
+    header('Location:login.php');
 
 }
 else 

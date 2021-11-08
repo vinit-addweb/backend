@@ -1,3 +1,29 @@
+
+
+<?php
+            include 'main.php';
+            $sid = $_GET['s_id'];
+            $sql = "select * from Students where Id = $sid";
+            //echo $sql;
+            $query = mysqli_query($conn, $sql) or die("Error in Query"); 
+            $row = mysqli_fetch_array($query);
+            $query=mysqli_query($conn,$sql);
+  $semail= $_SESSION['email'];
+
+  $sql =" select Name from Students where Email ='$semail'";
+  echo "<center><b><h3>Welcome ".$row["Name"]."</center>";
+            $sid = $row['Id'];
+            $sname = $row['Name'];
+            $semail = $row['Email'];
+            $spass = $row['Password'];
+            $smobile = $row['Mobile'];
+            $saddress=$row['Address'];
+            
+
+          
+         ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +50,18 @@
     
     
 }
+ /* logout button */
+
+ .btn-primary{
+  
+ }
+
+  .logout input{
+            position:absolute;
+            right: 10px;
+            top:5px;
+            width:5%;
+          }  
 .head{
     text-align:center;
     margin-bottom:5px;
@@ -36,11 +74,36 @@
     width: 100%;
     margin-top: 20px;
 }
+    /* logout button */
+    .table {
+    --bs-table-bg: transparent;
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: #212529;
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+    --bs-table-active-color: #212529;
+    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+    --bs-table-hover-color: #212529;
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    width: 76%;
+    margin-bottom: 1rem;
+    color: #212529;
+    vertical-align: top;
+    border-color: #dee2e6;
+    margin-left:10%;
+    margin-top:50px;
+    text-decoration:none:
+}
     </style>
     <title>Update details</title>
 </head>
 <body>
-   
+<div class="top">  
+      <div class="logout">
+          <form method='POST'>
+          <input type="submit" value="Logout" name="logout" class="btn btn-primary">
+          </form>
+          </div>
+          </div>
 
     <div class="container-fluid">
    
@@ -52,30 +115,30 @@
 </div>
 <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Name</label>
-    <input type="text" name="nam" class="form-control" placeholder="Enter your name">
+    <input type="text" name="nam" class="form-control" placeholder="Enter your name" value=<?php echo $sname?>> 
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Mobile no.</label>
-    <input type="text" name="mob" class="form-control" placeholder="Enter your name">
+    <input type="text" name="mob" class="form-control" value=<?php echo $smobile?> >
   </div>
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" name="email" placeholder="Enter Your Email ">
+    <input type="email" class="form-control" name="email" value=<?php echo $semail ?>  >
     
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" name="pass" class="form-control" placeholder="*************">
-  </div>
+  </div>    
   <div class="form-floating">
-  <textarea class="form-control" placeholder="Type from here..." name="add" ></textarea>
-  <label for="floatingTextarea">Address</label>
+  <textarea class="form-control" value=<?php echo $saddress ?>   name="add" ><?php echo $saddress ?></textarea>
+  <label for="floatingTextarea">City</label>
 </div>
-  <button id="btn" name="btn" value="login" class="btn btn-primary btn-block"> Submit</button>
+<input type="submit" value="Update" name="update" class="btn btn-primary"  >
   <!-- <button type="submit" class="btn btn-primary btn-block" name="login" value="login">Login</button> -->
-  <button type="submit" class="btn btn-primary btn-block">Signup</button>
+  <!-- <button type="submit" class="btn btn-primary btn-block">Signup</button> -->
 </form>
         </div>
 
@@ -83,71 +146,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Update details</title>
-</head>
-<body>
-   
-<form method="POST">
-    <div id="container">
-      <div class="head">
-          <h2>Update Details</h2>
-      </div>
-       <label for="Name">Name:</label>
-      <div class="frm">
-         <input type="text" name="nam" placeholder="Enter Your Name">
-      </div>
-      <label for="Name">Mobile:</label>
-      <div class="frm">
-        <input type="text" name="mob" placeholder="Enter Your Mobile no.">
-      </div>
-      <label for="Name">Email:</label>
-      <div class="frm">
-        <input type="email" name="email" placeholder="Enter Your Email">
-      </div>
-      <label for="Name">Password:</label>
-      <div class="frm">
-          <input type="password" name="pass" placeholder="****************" >
-      </div>
-      <label for="Name">Address:</label>
-      <div class="frm">
-          <textarea name="add"  cols="33" rows="5" placeholder="Type from here....."></textarea>
-      </div>
-      <button id="btn" name="btn"> Submit</button>
-      </div>
-    </form>
-   
 
-</body>
-</html> -->
  <?php
-
+ob_start();
 include 'main.php';
-if(isset($_POST['btn'])){
-  $sid=$_GET['s_id'];
+if(isset($_POST['update'])){
+  $sid=$_GET['s_id']; 
   $sname=$_POST['nam'];
   $semail=$_POST['email'];
   $smobile=$_POST['mob'];
   $spassword=$_POST['pass'];
   $saddress=$_POST['add'];
-  include 'main.php';
 
-  $sql="update Students set Name='$sname',Email='$semail',Password='$spassword',Mobile='$smobile' where Id='$sid';";
-  //echo $sql;
-  $query=mysqli_query($conn,$sql) or die("Error in Query");
-
-if($query){
-
-echo "Information is update";
-header('Location:dash.php');
-
-}
+  $sql="update Students set Name='$sname',Email='$semail',Password='$spassword',Mobile='$smobile',Address='$saddress' where Id='$sid';";
+  echo $sql;
+ $q=mysqli_query($conn,$sql);
+  if($q){
+    echo "data is updated";
+   header('Location:dash.php');
+  }
 else
 {
   echo "Error in update";

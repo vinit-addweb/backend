@@ -61,6 +61,7 @@
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" name="pass" class="form-control" placeholder="*************">
   </div>
+  <label><input  name="remember" value="remember" type="checkbox" /> &nbsp;Remember me</label>  
   <button id="btn" name="login" value="login" class="btn btn-primary btn-block"> Submit</button>
   <!-- <button type="submit" class="btn btn-primary btn-block" name="login" value="login">Login</button> -->
   <input type="submit" name="signup" class="btn btn-primary btn-block" value="Signup">  </input>
@@ -102,6 +103,13 @@ if(isset($_POST['login'])){
 }
 elseif(isset($_POST['signup'])) {
   header('Location:insert.php');
+}
+
+if(isset($_POST['remember'])){
+  $email = $_POST['email'];
+  $pass = $_POST['pass'];
+  setcookie("useremail", $email); 
+  setcookie("userpass", $pass); 
 }
 
 ?>  

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/seller.css">
     <title>Insert Data</title>
     <style>
          .form-container{
@@ -26,6 +27,7 @@
     
     
 }
+
 .head{
     text-align:center;
     margin-bottom:5px;
@@ -40,6 +42,15 @@
 }
 .heightt{
     height:33px
+}
+.btn1{
+    background: #71cd14;
+    border: 1px solid #71cd14;
+}
+          .btn1:hover{
+    background: transparent;
+    color: #71cd14;
+    border: 1px solid #71cd14;
 }
     </style>
 </head>
@@ -81,10 +92,10 @@
 <label for="exampleInputPassword1" class="form-label">Conform Password</label>
 <input type="password" name="cpass" class="form-control" placeholder="*************">
 </div>
-
-<button name="insert" value="submit" class="btn btn-primary btn-block"> Submit</button>
-
 <p class="text-center text-muted mt-3 mb-0">Have already an account? <a href="login.php" class="fw-bold text-body"><u>Login here</u></a></p>
+<button name="insert" value="submit" class="btn btn-primary btn-block btn1"> Submit</button>
+
+
 </div> 
 
 
@@ -113,7 +124,7 @@ if(isset($_POST['insert']))
     error_reporting(0);
     //  $conn = mysqli_connect("localhost","root","","College") or die("Error in Connection");
     $sql = "Insert into seller (Name,Mobile,Email,Password) values ('$sname',$smobile,'$semail','$spassword')";
-   echo $sql;
+   //echo $sql;
     $q = mysqli_query($conn,$sql) or die("Error in query");
    
   if($q)

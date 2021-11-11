@@ -1,15 +1,38 @@
-.a{border: 2px solid black;
+/* .a{
     height: 500px;
     width: 300px;
+    margin-left:48px;
 
-}
-a >img{
+} */
+/* a >img{
     width: 100px; height: 200px;
-}
+} */
 
 .cat{
     margin-top: 100px;
 }
 .card{
     margin-left: 76px
+}
+.btn1{
+    background: #71cd14;
+    border: 1px solid #71cd14;
+}
+          .btn1:hover{
+    background: transparent;
+    color: #71cd14;
+    border: 1px solid #71cd14;
+}
+.imge{
+    width: 15rem; 
+    height: 18rem;
+}
+
+.card{
+    padding-top:10px ;
+    width: 20rem; height: 25rem;
+}
+.col1 {
+    width: 32rem;
+    height: 29rem;
 }

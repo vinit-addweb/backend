@@ -60,7 +60,7 @@ label{font-weight: bold;}
    
    <div class="row">
        <div class="col-12 col-sm-6 col-md-3"></div>
-       <form class="form-container" method="POST"> 
+       <form class="form-container" enctype="multipart/form-data"   method="POST"> 
        <div class="head">
      <h5>Add Product</h5>
 </div>
@@ -74,18 +74,27 @@ label{font-weight: bold;}
 </div>
 
 <div class="mb-3">
-<label  class="form-label">catagery</label>
-<input type="text" name="cat" class="form-control" placeholder="Enter Product catagery ">
+<label  class="form-label">catagery</label><br>
+<select name="cat">
+<option value="Select" selected>Select</option>
+<option value="accessories" name="Accessories">Accessories</option>
+  <option value="clothing" name="Clothings">Clothings</option> 
+  
+  <option value="electronics" name="Electronics">Electronics</option>
+  
+
+</select>
+<!-- <input type="text" name="cat" class="form-control" placeholder="Enter Product catagery "> -->
 </div>
 
 <div class="mb-3">
 <label  class="form-label">Price </label>
-<input type="email" class="form-control" name="email" placeholder="Enter Product price ">
+<input type="text" name= "price"class="form-control"  placeholder="Enter Product price ">
 
 </div>
 <div class="mb-3">
 <label  class="form-label">Product Color</label>
-<input type="password" name="pass" class="form-control" placeholder="Enter Product Color">
+<input type="text" name="color" class="form-control" placeholder="Enter Product Color">
 </div>
 
 <div class="mb-3">
@@ -94,7 +103,7 @@ label{font-weight: bold;}
     </div>
 
 <label class="form-label">Image Upload</label><br>
-<input type="file">
+<input type="file" name="file">
 <button name="insert" value="submit" class="btn btn-primary btn-block btn1"> Submit</button>
 </div>
 
@@ -110,3 +119,35 @@ label{font-weight: bold;}
 </div>
 </body>
 </html>
+
+<?php
+include 'main.php';
+
+if(isset($_POST['insert'])){
+    $pname=$_POST['nam'];
+    $pcat=$_POST['cat'];
+    
+    $pprice=$_POST['price'];
+    $pcolor=$_POST['color'];
+    $pdis=$_POST['dis'];
+    $pimg="images/".$_FILES["file"]["name"];   
+
+error_reporting();
+
+
+$sql = "insert into $pcat (pro_name,sub_catagory,pro_description,pro_price,pro_color,pro_img,seller_Id) 
+values ( '$pname', '$pdis', '$pprice', '$pcolor', '$pimg')"; 
+
+move_uploaded_file($_FILES["file"]["tmp_name"], $pimg);
+
+echo $sql;
+$q=mysqli_query($conn,$sql) or die("Error in query");
+
+if($q){
+    header('Location:mandash.php');
+}
+else{
+    echo "Error";
+}
+}
+?>

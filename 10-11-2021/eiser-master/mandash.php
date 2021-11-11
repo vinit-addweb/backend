@@ -1,4 +1,5 @@
 <?php
+include 'main.php';
 ob_start();
 session_start();
 if($_SESSION['email']==''){
@@ -49,14 +50,17 @@ else{
     --bs-table-active-bg: rgba(0, 0, 0, 0.1);
     --bs-table-hover-color: #212529;
     --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-    width: 93%;
+    width: 97%;
     margin-bottom: 1rem;
     color: #212529;
     vertical-align: top;
     border-color: #dee2e6;
-    margin-left:4%;
+    margin-left:1%;
     margin-top:50px;
     text-align:center;
+}
+.table ,td,th{
+  padding:30px;
 }
  i{
   padding:2px;
@@ -80,13 +84,14 @@ else{
           </div>
           </div>
         
-</body>
-</html>
+
 <?php 
+$cat=$_GET['cat'];
+
     include 'main.php';
 
     $semail = $_SESSION['email'];
-    $query = mysqli_query($conn,"select * from mens") or die("Error in query");
+    $query = mysqli_query($conn,"select * from $cat") or die("Error in query");
     
     $sql ="select Name from seller where Email ='$semail'";
     
@@ -100,34 +105,36 @@ else{
     <thead>
       <tr>
         <th scope='col'>ID</th>
+        
         <th scope='col'>Name</th>
         <th scope='col'>Catagery</th>
         <th scope='col'>Discription</th>
         <th scope='col'>Price</th>
         <th scope='col'>Color</th>
+        <th scope='col'>Image</th>
         <th scope='col'>Action</th>
         
       </tr>
     </thead>
     <tbody>";
    
-    // echo"<center><table border=2><tr><th>Id</th><th>Name</th><th>Mobile</th><th>Email</th><th>Password</th><th>Address</th><th>Edit</th><th>Delete</th></tr>";
+   
     while($row=mysqli_fetch_array($query))
     {
-        $s_id=$row['proid '];
+        $s_id=$row['proid'];
         echo "<tr>";
-        echo "<td>".$row['proid']."</td>";
-        echo "<td>".$row['proname']."</td>";
-        echo "<td>".$row['sub_catagry']."</td>";
-        echo "<td>".$row['prodiscription']."</td>";
-        echo "<td>".$row['proprice']."</td>";
-        echo "<td>".$row['procolor']."</td>";
-        echo "<td>"."<a href='update.php?s_id=$s_id'><i class='fas fa-eye'></i></a>". "". "<a href='update.php?s_id=$s_id'><i class='fas fa-edit'></i></a>".""."<a href='Delete.php?s_id=$s_id'><i class='far fa-trash-alt'></i></a>"
+        echo "<td>".$row['pro_id']."</td>";
+       
+        echo "<td>".$row['pro_name']."</td>";
+        echo "<td>".$row['sub_catagory']."</td>";
+        echo "<td>".$row['pro_description']."</td>";
+        echo "<td>".$row['pro_price']."</td>";
+        echo "<td>".$row['pro_color']."</td>";
+        echo "<td><img src=".$row['pro_img']."height=100 width=100></td>";
+        echo "<td>"."<a href='update.php?s_id=$s_id'><i class='fas fa-eye'></i></a>". "". "<a href='editpro.php?s_id=$s_id'><i class='fas fa-edit'></i></a>".""."<a href='delete.php?s_id=$s_id'><i class='far fa-trash-alt'></i></a>"
         ;
 
-        // echo "<td><a href='update.php?s_id=$s_id'>Edit</a></td>";
-        // echo "<td><a href='Delete.php?s_id=$s_id'>Delete</a>.</td>";
-    
+       
     }       
     echo "</tbody></table></center>";
     }
@@ -137,4 +144,10 @@ else{
 if(isset($_POST['logout'])){
     header('Location:logout.php');
 }
+elseif(isset($_POST['product'])){
+  header('Location:addproducts.php');
+}
 ?>
+
+</body>
+</html>

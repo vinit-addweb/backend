@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/seller.css"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
          .form-container{
@@ -37,7 +37,15 @@
     margin-top: 20px;
 }
 
-    
+.btn1{
+    background: #71cd14;
+    border: 1px solid #71cd14;
+}
+          .btn1:hover{
+    background: transparent;
+    color: #71cd14;
+    border: 1px solid #71cd14;
+}
     </style>
     <title>Login page</title>
 </head>
@@ -62,9 +70,9 @@
     <input type="password" name="pass" class="form-control" placeholder="*************">
   </div>
   <!-- <label><input  name="remember" value="remember" type="checkbox" /> &nbsp;Remember me</label>   -->
-  <button id="btn" name="login" value="login" class="btn btn-primary btn-block"> Submit</button>
+  <button id="btn" name="login" value="login" class="btn btn-primary btn-block btn1"> Submit</button>
  
-  <input type="submit" name="signup" class="btn btn-primary btn-block" value="Signup">  </input>
+  <input type="submit" name="signup" class="btn btn-primary btn-block btn1" value="Signup">  </input>
 </form>
         </div>
 
@@ -89,7 +97,7 @@ if(isset($_POST['login'])){
       session_start();
        //echo "Login Success";
        $_SESSION['email']=$semail;
-       header('Location:catageryseller.html');
+       header('Location:catageryseller.php');
    
     }
     else

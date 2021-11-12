@@ -72,13 +72,17 @@ label{font-weight: bold;}
 <label  class="form-label">Product name</label>
 <input type="text" name="nam" class="form-control" placeholder="Enter Product name">
 </div>
+<div class="mb-3">
+<label  class="form-label">Product catagery</label>
+<input type="text" name="subcat" class="form-control" placeholder="Enter Product name">
+</div>
 
 <div class="mb-3">
 <label  class="form-label">catagery</label><br>
 <select name="cat">
 <option value="Select" selected>Select</option>
 <option value="accessories" name="Accessories">Accessories</option>
-  <option value="clothing" name="Clothings">Clothings</option> 
+  <option value="clothing" name="Clothings">clothings</option> 
   
   <option value="electronics" name="Electronics">Electronics</option>
   
@@ -121,30 +125,34 @@ label{font-weight: bold;}
 </html>
 
 <?php
+error_reporting(0);
+ob_start();
 include 'main.php';
 
 if(isset($_POST['insert'])){
-    $pname=$_POST['nam'];
+   
+    $pname = mysqli_real_escape_string($conn,$_POST['nam']);
     $pcat=$_POST['cat'];
-    
+    $subcat=$_POST['subcat'];
     $pprice=$_POST['price'];
     $pcolor=$_POST['color'];
-    $pdis=$_POST['dis'];
+    $pdis=mysqli_real_escape_string($conn,$_POST['dis']);
     $pimg="images/".$_FILES["file"]["name"];   
 
-error_reporting();
 
 
-$sql = "insert into $pcat (pro_name,sub_catagory,pro_description,pro_price,pro_color,pro_img,seller_Id) 
-values ( '$pname', '$pdis', '$pprice', '$pcolor', '$pimg')"; 
 
-move_uploaded_file($_FILES["file"]["tmp_name"], $pimg);
+$sql = "INSERT INTO $pcat (`pro_name`, `sub_catagory`, `pro_description`, `pro_price`, `pro_color`, `pro_img`, `seller_Id`) VALUES ('$pname', '$subcat', '$pdis', '$pprice', '$pcolor', '$pimg', 1) "; 
+
+
 
 echo $sql;
 $q=mysqli_query($conn,$sql) or die("Error in query");
 
 if($q){
-    header('Location:mandash.php');
+    move_uploaded_file($_FILES["file"]["tmp_name"], $pimg);
+    header("Location:mandash.php?cat=$pcat");
+    
 }
 else{
     echo "Error";

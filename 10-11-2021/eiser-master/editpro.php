@@ -1,5 +1,6 @@
 <?php
 
+ob_start();
 include 'main.php';
 session_start();
 $semail = $_SESSION['email'];
@@ -319,6 +320,46 @@ echo "<center><b><h3>Welcome ".$r["Name"]."</center>";
    </div>
 
 </div>
+<?php
+include "main.php";
+
+if(isset($_POST['update']))
+{
+    $pname = mysqli_real_escape_string($conn,$_POST['nam']);
+    $pcat=$_POST['cat'];
+    $subcat=$_POST['subcat'];
+    $pprice=$_POST['price'];
+    $pcolor=$_POST['color'];
+    $pdis=mysqli_real_escape_string($conn,$_POST['dis']);
+      
+     if($_FILES["file"]["size"]==0)
+     {
+         $pimg=$pimg;
+     }
+     else
+     {
+         $pimg="images/".$_FILES["file"]["name"];
+     }
+    $sql="update $cat  set pro_name ='$pname',sub_catagory='$subcat',pro_description='$pdis',pro_price='$pprice',pro_color ='$pcolor' where pro_id ='$sid';";
+     $q=mysqli_query($conn,$sql);
+
+    if($q)
+      { 
+        echo "Data updated";  
+        move_uploaded_file($_FILES["file"]["tmp_name"], $pimg);
+        
+        header("Location:mandash.php?cat=$cat"); 
+           
+     }
+      else
+     {
+         echo "Error in update";
+     }
+
+     mysqli_close();
+}
+
+?>
 <!--================ start footer Area  =================-->
 <footer class="footer-area section_gap">
     <div class="container">
@@ -414,42 +455,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     
 
 
-<?php
-include "main.php";
-
-if(isset($_POST['update']))
-{
-    $pname = mysqli_real_escape_string($conn,$_POST['nam']);
-    $pcat=$_POST['cat'];
-    $subcat=$_POST['subcat'];
-    $pprice=$_POST['price'];
-    $pcolor=$_POST['color'];
-    $pdis=mysqli_real_escape_string($conn,$_POST['dis']);
-      
-     if($_FILES["file"]["size"]==0)
-     {
-         $pimg=$pimg;
-     }
-     else
-     {
-         $pimg="images/".$_FILES["file"]["name"];
-     }
-    $sql="update $cat  set pro_name ='$pname',sub_catagory='$subcat',pro_description='$pdis',pro_price='$pprice',pro_color ='$pcolor' where pro_id ='$sid';";
-     $q=mysqli_query($conn,$sql);
-
-    if($q)
-      { 
-        echo "Data updated";  
-        move_uploaded_file($_FILES["file"]["tmp_name"], $pimg);
-        
-        header("Location:mandash.php?cat=$cat");    
-     }
-      else
-     {
-         echo "Error in update";
-     }
-
-     mysqli_close();
-}
-
-?>

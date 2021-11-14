@@ -241,10 +241,26 @@
       </div>
 
       <div class="row">
+
+      <?php
+
+       include 'main.php';
+       $sql = "select * from accessories";
+       
+       $q=mysqli_query($conn,$sql) or die("Error in query");
+      
+       while($row1=mysqli_fetch_array($q))
+       {
+         $pro_id=$row1["pro_id"];
+         echo $pro_name;
+         $pro_name=$row1["pro_name"];
+         $pro_price=$row1["pro_img"];
+      ?>
+
         <div class="col-lg-4 col-md-6">
           <div class="single-product">
             <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/feature-product/f-p-1.jpg" alt="" />
+              <img class="img-fluid w-100" src=<?php echo $pro_img ?> alt="" />
               <div class="p_icon">
                 <a href="#">
                   <i class="ti-eye"></i>
@@ -259,17 +275,20 @@
             </div>
             <div class="product-btm">
               <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
+                <h4><?php echo $pro_name ?></h4>
               </a>
               <div class="mt-3">
-                <span class="mr-4">$25.00</span>
+                <span class="mr-4"><?php echo '$'.$pro_price ?></span>
                 <del>$35.00</del>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-lg-4 col-md-6">
+ 
+        <?php
+       }
+        ?>
+        <!-- <div class="col-lg-4 col-md-6">
           <div class="single-product">
             <div class="product-img">
               <img class="img-fluid w-100" src="img/product/feature-product/f-p-2.jpg" alt="" />
@@ -325,7 +344,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
   <!--================ End Feature Product Area =================-->
 

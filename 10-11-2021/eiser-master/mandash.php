@@ -274,6 +274,7 @@ $_SESSION['cat']=$cat;
         <th scope='col'>Price</th>
         <th scope='col'>Color</th>
         <th scope='col'>Image</th>
+        <th scope='col'>Status</th>
         <th scope='col'>Action</th>
         
       </tr>
@@ -294,8 +295,17 @@ $_SESSION['cat']=$cat;
         echo "<td>".$row['pro_price']."</td>";
         echo "<td>".$row['pro_color']."</td>";
         echo "<td><img src=".$pro_img." height=100 width=100></td>";
-        echo "<td>"."". "<a href='editpro.php?id=$s_id'><i class='fas fa-edit'></i></a>"."".
-        "<a href='delete.php?id=$s_id'><i class='far fa-trash-alt'></i></a>";
+        echo  "<td>";
+        if($row['status']==1){
+             echo '<p><a href="status.php?d_id='.$row['pro_id'].'&status=0" <button type="button" class="btn btn-success">Enable</button></a></p>';
+        }
+        else{
+          echo '<p><a href="status.php?d_id='.$row['pro_id'].'&status=1" <button type="button" class="btn btn-danger">Disable</button></a></p>';
+        }
+        echo "</td>";
+        
+        
+        echo "<td>"."". "<a href='editpro.php?id=$s_id'><i class='fas fa-edit'></i></a>";
 
        
     }       

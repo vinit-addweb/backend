@@ -21,6 +21,7 @@
   <!-- main css -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  
 </head>
 
 <body>
@@ -245,22 +246,23 @@
       <?php
 
        include 'main.php';
-       $sql = "select * from accessories";
+       $sql = "select * from clothing";
        
        $q=mysqli_query($conn,$sql) or die("Error in query");
       
        while($row1=mysqli_fetch_array($q))
        {
          $pro_id=$row1["pro_id"];
-         echo $pro_name;
+         //echo $pro_name;
          $pro_name=$row1["pro_name"];
-         $pro_price=$row1["pro_img"];
+         $pro_image=$row1["pro_img"];
+         $pro_price=$row1["pro_price"];
       ?>
 
         <div class="col-lg-4 col-md-6">
           <div class="single-product">
             <div class="product-img">
-              <img class="img-fluid w-100" src=<?php echo $pro_img ?> alt="" />
+              <img class="img-fluid w-100 h" src="<?php echo $pro_image ?>"hwidth="500" height="600"  >
               <div class="p_icon">
                 <a href="#">
                   <i class="ti-eye"></i>
@@ -278,8 +280,8 @@
                 <h4><?php echo $pro_name ?></h4>
               </a>
               <div class="mt-3">
-                <span class="mr-4"><?php echo '$'.$pro_price ?></span>
-                <del>$35.00</del>
+                <span class="mr-4"><?php echo '₹'.$pro_price?></span>
+                <del>₹1350.00</del>
               </div>
             </div>
           </div>

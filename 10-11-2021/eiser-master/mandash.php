@@ -83,6 +83,7 @@ else{
 }
 .table ,td,th{
   padding:30px;
+  font-size:20px;
 }
  i{
   padding:2px;

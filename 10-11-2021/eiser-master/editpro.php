@@ -36,7 +36,7 @@ $query = mysqli_query($conn, $sql) or die("Error in Query");
        $pcolor=$row['pro_color'];
        $pdiss = $row['pro_description'];
        $pdis=mysqli_real_escape_string($conn,$pdiss);
-       $pimg=$row['pro_img'];
+       $ppimg=$row['pro_img'];
 
 ?>  
 
@@ -334,13 +334,13 @@ if(isset($_POST['update']))
       
      if($_FILES["file"]["size"]==0)
      {
-         $pimg=$pimg;
+         $pimg=$ppimg;
      }
      else
      {
-         $pimg="images/".$_FILES["file"]["name"];
+         $pimg="images/".$_FILES['file']['name'];
      }
-    $sql="update $cat  set pro_name ='$pname',sub_catagory='$subcat',pro_description='$pdis',pro_price='$pprice',pro_color ='$pcolor' where pro_id ='$sid';";
+    $sql="update $cat  set pro_name ='$pname',sub_catagory='$subcat',pro_description='$pdis',pro_price='$pprice',pro_color ='$pcolor',pro_img='$pimg' where pro_id ='$sid';";
      $q=mysqli_query($conn,$sql);
 
     if($q)

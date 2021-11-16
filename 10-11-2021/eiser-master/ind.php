@@ -246,7 +246,7 @@
       <?php
 
        include 'main.php';
-       $sql = "select * from clothing";
+       $sql = "select * from clothing where status = 1";
        
        $q=mysqli_query($conn,$sql) or die("Error in query");
       
@@ -262,7 +262,7 @@
         <div class="col-lg-4 col-md-6">
           <div class="single-product">
             <div class="product-img">
-              <img class="img-fluid w-100 h" src="<?php echo $pro_image ?>"hwidth="500" height="600"  >
+              <img src="<?php echo $pro_image ?>"width=auto height="400">
               <div class="p_icon">
                 <a href="#">
                   <i class="ti-eye"></i>
@@ -277,11 +277,10 @@
             </div>
             <div class="product-btm">
               <a href="#" class="d-block">
-                <h4><?php echo $pro_name ?></h4>
+                <h4><?php echo substr($pro_name, 0, 20);?>....</h4>
               </a>
               <div class="mt-3">
                 <span class="mr-4"><?php echo '₹'.$pro_price?></span>
-                <del>₹1350.00</del>
               </div>
             </div>
           </div>
@@ -514,7 +513,7 @@
 
   <!--================ Inspired Product Area =================-->
   <section class="inspired_product_area section_gap_bottom_custom">
-    <div class="container">
+  <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
@@ -523,12 +522,30 @@
           </div>
         </div>
       </div>
-
       <div class="row">
+
+<?php
+  $s = "select * from electronics where status = 1";
+       
+       $qu=mysqli_query($conn,$s) or die("Error in query");
+      
+       while($row1=mysqli_fetch_array($qu))
+       {
+         $pro_id=$row1["pro_id"];
+         //echo $pro_name;
+         $pro_name=$row1["pro_name"];
+         $pro_image=$row1["pro_img"];
+         $pro_price=$row1["pro_price"];
+      ?>
+
+
+   
+
+      
         <div class="col-lg-3 col-md-6">
           <div class="single-product">
             <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i1.jpg" alt="" />
+            <img src="<?php echo $pro_image ?>"width=auto height="200">
               <div class="p_icon">
                 <a href="#">
                   <i class="ti-eye"></i>
@@ -552,7 +569,9 @@
             </div>
           </div>
         </div>
-
+<?php
+       }
+?>
         <div class="col-lg-3 col-md-6">
           <div class="single-product">
             <div class="product-img">
@@ -749,7 +768,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
   <!--================ End Inspired Product Area =================-->
 

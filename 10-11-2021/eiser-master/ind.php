@@ -246,6 +246,8 @@
       <?php
 
        include 'main.php';
+       session_start();
+
        $sql = "select * from clothing where status = 1";
        
        $q=mysqli_query($conn,$sql) or die("Error in query");
@@ -264,7 +266,7 @@
             <div class="product-img">
               <img src="<?php echo $pro_image ?>"width=auto height="400">
               <div class="p_icon">
-                <a href="#">
+                <a href="single-product.php?id=<?php echo $pro_id ?>&cat=clothing">
                   <i class="ti-eye"></i>
                 </a>
                 <a href="#">
@@ -378,18 +380,35 @@
         </div>
       </div>
 
+
+
+  <?php
+  $s = "select * from electronics where status = 1 and pro_id = 5";
+       
+       $qu=mysqli_query($conn,$s) or die("Error in query");
+      
+       
+         $pro_id=$row1["pro_id"];
+         
+         echo $pro_id;
+         $pro_name1=$row1["pro_name"];
+         $pro_image1=$row1["pro_img"];
+         $pro_price1=$row1["pro_price"];
+      ?>
       <div class="row">
         <div class="col-lg-6">
           <div class="new_product">
             <h5 class="text-uppercase">collection of 2019</h5>
             <h3 class="text-uppercase">Men’s summer t-shirt</h3>
             <div class="product-img">
-              <img class="img-fluid" src="img/product/new-product/new-product1.png" alt="" />
+            <img src="<?php echo $pro_image ?>"width=350 height="270">
             </div>
             <h4>$120.70</h4>
             <a href="#" class="main_btn">Add to cart</a>
           </div>
         </div>
+
+
 
         <div class="col-lg-6 mt-5 mt-lg-0">
           <div class="row">
@@ -512,6 +531,9 @@
   <!--================ End New Product Area =================-->
 
   <!--================ Inspired Product Area =================-->
+
+
+
   <section class="inspired_product_area section_gap_bottom_custom">
   <div class="container">
       <div class="row justify-content-center">
@@ -523,6 +545,9 @@
         </div>
       </div>
       <div class="row">
+        
+
+
 
 <?php
   $s = "select * from electronics where status = 1";
@@ -560,7 +585,7 @@
             </div>
             <div class="product-btm">
               <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
+                <h4><?php  ?></h4>
               </a>
               <div class="mt-3">
                 <span class="mr-4">$25.00</span>
@@ -569,206 +594,207 @@
             </div>
           </div>
         </div>
-<?php
+
+           <!-- <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+              <div class="product-img">
+              <img src=""width=auto height="200"> 
+                <div class="p_icon">
+                  <a href="#">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-heart"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-shopping-cart"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="product-btm">
+                <a href="#" class="d-block">
+                  <h4>Latest men’s sneaker</h4>
+                </a>
+                <div class="mt-3">
+                  <span class="mr-4">$25.00</span>
+                  <del>$35.00</del>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <?php
        }
 ?>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i2.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
+<!--
+          <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+              <div class="product-img">
+                <img class="img-fluid w-100" src="img/product/inspired-product/i3.jpg" alt="" />
+                <div class="p_icon">
+                  <a href="#">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-heart"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-shopping-cart"></i>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
+              <div class="product-btm">
+                <a href="#" class="d-block">
+                  <h4>Latest men’s sneaker</h4>
+                </a>
+                <div class="mt-3">
+                  <span class="mr-4">$25.00</span>
+                  <del>$35.00</del>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i3.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+              <div class="product-img">
+                <img class="img-fluid w-100" src="img/product/inspired-product/i4.jpg" alt="" />
+                <div class="p_icon">
+                  <a href="#">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-heart"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-shopping-cart"></i>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
+              <div class="product-btm">
+                <a href="#" class="d-block">
+                  <h4>Latest men’s sneaker</h4>
+                </a>
+                <div class="mt-3">
+                  <span class="mr-4">$25.00</span>
+                  <del>$35.00</del>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+              <div class="product-img">
+                <img class="img-fluid w-100" src="img/product/inspired-product/i5.jpg" alt="" />
+                <div class="p_icon">
+                  <a href="#">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-heart"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-shopping-cart"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="product-btm">
+                <a href="#" class="d-block">
+                  <h4>Latest men’s sneaker</h4>
+                </a>
+                <div class="mt-3">
+                  <span class="mr-4">$25.00</span>
+                  <del>$35.00</del>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i4.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+              <div class="product-img">
+                <img class="img-fluid w-100" src="img/product/inspired-product/i6.jpg" alt="" />
+                <div class="p_icon">
+                  <a href="#">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-heart"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-shopping-cart"></i>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i5.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
+              <div class="product-btm">
+                <a href="#" class="d-block">
+                  <h4>Latest men’s sneaker</h4>
                 </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
+                <div class="mt-3">
+                  <span class="mr-4">$25.00</span>
+                  <del>$35.00</del>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i6.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+              <div class="product-img">
+                <img class="img-fluid w-100" src="img/product/inspired-product/i7.jpg" alt="" />
+                <div class="p_icon">
+                  <a href="#">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-heart"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-shopping-cart"></i>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
+              <div class="product-btm">
+                <a href="#" class="d-block">
+                  <h4>Latest men’s sneaker</h4>
+                </a>
+                <div class="mt-3">
+                  <span class="mr-4">$25.00</span>
+                  <del>$35.00</del>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i7.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+              <div class="product-img">
+                <img class="img-fluid w-100" src="img/product/inspired-product/i8.jpg" alt="" />
+                <div class="p_icon">
+                  <a href="#">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-heart"></i>
+                  </a>
+                  <a href="#">
+                    <i class="ti-shopping-cart"></i>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i8.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
+              <div class="product-btm">
+                <a href="#" class="d-block">
+                  <h4>Latest men’s sneaker</h4>
                 </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
+                <div class="mt-3">
+                  <span class="mr-4">$25.00</span>
+                  <del>$35.00</del>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div> -->
+      </div> --> -->
   </section>
   <!--================ End Inspired Product Area =================-->
 

@@ -1,3 +1,29 @@
+<?php
+error_reporting();
+ob_start();
+include 'main.php';
+
+session_start();
+ $cat=$_GET['cat'];
+
+
+$id = $_GET['id'];
+
+$sql ="select * from $cat where pro_id = $id";
+
+$q= mysqli_query($conn,$sql)or die("error in query");
+
+$row = mysqli_fetch_array($q);
+
+$pro_name = $row['pro_name'];
+$pro_img = $row['pro_img'];
+$pro_price = $row['pro_price'];
+$pro_dic = $row['pro_description'];
+$pro_catagory = $row['sub_catagory'];
+$pro_status = $row['status'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -230,19 +256,19 @@
         <div class="row s_product_inner">
           <div class="col-lg-6">
             <div class="s_product_img">
-              <div
+              <!-- <div
                 id="carouselExampleIndicators"
                 class="carousel slide"
-                data-ride="carousel"
-              >
-                <ol class="carousel-indicators">
+                data-ride="carousel" -->
+              
+                <!-- <ol class="carousel-indicators">
                   <li
                     data-target="#carouselExampleIndicators"
                     data-slide-to="0"
                     class="active"
                   >
                     <img
-                      src="img/product/single-product/s-product-s-2.jpg"
+                      src=""
                       alt=""
                     />
                   </li>
@@ -264,14 +290,14 @@
                       alt=""
                     />
                   </li>
-                </ol>
+                </ol> -->
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
                       class="d-block w-100"
-                      src="img/product/single-product/s-product-1.jpg"
-                      alt="First slide"
+                     src="<?php echo $pro_img ?>"width=auto height="550"
                     />
+                    <!--
                   </div>
                   <div class="carousel-item">
                     <img
@@ -286,32 +312,43 @@
                       src="img/product/single-product/s-product-1.jpg"
                       alt="Third slide"
                     />
-                  </div>
+                  
+                </div>-->
                 </div>
-              </div>
+              </div> 
             </div>
           </div>
           <div class="col-lg-5 offset-lg-1">
             <div class="s_product_text">
-              <h3>Faded SkyBlu Denim Jeans</h3>
-              <h2>$149.99</h2>
+              <h3><?php echo $pro_name ?></h3>
+              <h2>₹ <?php echo $pro_price ?></h2>
               <ul class="list">
                 <li>
                   <a class="active" href="#">
-                    <span>Category</span> : Household</a
+                    <span>Category</span> : <?php echo $pro_catagory; ?></a
                   >
                 </li>
                 <li>
-                  <a href="#"> <span>Availibility</span> : In Stock</a>
+                  <a href="#"> <span>Availibility</span> : <?php 
+                  
+                  if($pro_status==1){
+                    echo "In Stock";
+                
+                  }
+                  else 
+                  {
+                    echo "Out of Stock";
+                  }
+                  
+                  ?></a>
                 </li>
               </ul>
               <p>
-                Mill Oil is an innovative oil filled radiator with the most
-                modern technology. If you are looking for something that can
-                make your interior look awesome, and at the same time give you
-                the pleasant warm feeling during the winter.
+             <?php echo $pro_dic ?>
               </p>
+              <form action="" method ="post">
               <div class="product_count">
+                
                 <label for="qty">Quantity:</label>
                 <input
                   type="text"
@@ -338,14 +375,40 @@
                 </button>
               </div>
               <div class="card_area">
-                <a class="main_btn" href="#">Add to Cart</a>
+                
+                <input type="submit" class="main_btn" href="#" name="add" value="Add to Cart">
+               
+               
+
+
                 <a class="icon_btn" href="#">
                   <i class="lnr lnr lnr-diamond"></i>
-                </a>
+                </a> 
                 <a class="icon_btn" href="#">
                   <i class="lnr lnr lnr-heart"></i>
                 </a>
               </div>
+                </form>
+
+                <?php
+                if(isset($_POST['add'])){
+                 $cart = $_POST['qty'];
+                 
+                 $sql = "INSERT INTO cart (`name`, `img`, `price`, `quantity`) VALUES ('$pro_name', '$pro_img', $pro_price,$cart)"; 
+                 echo $sql;
+                 $q = mysqli_query($conn,$sql) or die("Error in query");
+                
+                if($q)
+                {
+                    echo "data Inserted";
+
+                   header("Location:single-product.php?id=$id&cat=$cat");
+                
+                }
+
+                }
+               
+               ?>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2021 at 01:30 PM
+-- Generation Time: Nov 17, 2021 at 02:38 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -52,6 +52,28 @@ INSERT INTO `accessories` (`pro_id`, `pro_name`, `sub_catagory`, `pro_descriptio
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` bigint(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `img` varchar(100) NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `quantity` bigint(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `name`, `img`, `price`, `quantity`) VALUES
+(4, 'Blue printed casual shirt, has a mandarin collar collar, button placket, long sleeves, curved hem', 'images/shirt.webp', 350.00, 4),
+(5, 'Girls Black Blazer Dress', 'images/girlsblazer.jpg', 700.00, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
@@ -84,8 +106,8 @@ CREATE TABLE `clothing` (
 --
 
 INSERT INTO `clothing` (`pro_id`, `pro_name`, `sub_catagory`, `pro_description`, `pro_price`, `pro_color`, `pro_img`, `categories_id`, `status`) VALUES
-(4, 'Men Navy Red & white Striped Polo Collar T-shirt', 'T-Shirt', 'Blue printed casual shirt, has a mandarin collar collar, button placket, long sleeves, curved hem', 350.00, 'Blue', 'images/tshirt.jpg', 0, 1),
-(5, 'Girls Black Blazer Dress', 'Blazer', ' Black solid blazer dress  Shirt collar  Long, regular sleeves  Above knee length in straight Button closure', 700.00, 'black', 'images/girlsblazer.jpg', 0, 0),
+(4, 'Blue printed casual shirt, has a mandarin collar collar, button placket, long sleeves, curved hem', 'Shirt', 'Blue printed casual shirt, has a mandarin collar collar, button placket, long sleeves, curved hem', 350.00, 'Blue', 'images/shirt.webp', 0, 1),
+(5, 'Girls Black Blazer Dress', 'Blazer', ' Black solid blazer dress  Shirt collar  Long, regular sleeves  Above knee length in straight Button closure', 700.00, 'black', 'images/girlsblazer.jpg', 0, 1),
 (6, 'Men Navy Red & white Striped Polo Collar T-shirt', 'T-shirt', 'Fashion trends come and go, but a few manage to break the cycle and earn wardrobe-essential status. A basic, if you will. New Basics resurface year after year, and outfits wouldnt be the same without them. These pieces are tried-and-true wardrobe staples and act as the foundation to every good look.', 1199.00, 'Blue', 'images/tshirt.jpg', 0, 1);
 
 -- --------------------------------------------------------
@@ -147,6 +169,12 @@ ALTER TABLE `accessories`
   ADD PRIMARY KEY (`pro_id`);
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -179,6 +207,12 @@ ALTER TABLE `seller`
 --
 ALTER TABLE `accessories`
   MODIFY `pro_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `categories`

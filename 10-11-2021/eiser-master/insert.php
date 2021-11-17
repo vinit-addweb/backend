@@ -285,15 +285,16 @@ if(isset($_POST['insert']))
     else{
       
     error_reporting(0);
-    //  $conn = mysqli_connect("localhost","root","","College") or die("Error in Connection");
+   
     $sql = "Insert into seller (Name,Mobile,Email,Password) values ('$sname',$smobile,'$semail','$spassword')";
-   //echo $sql;
+   echo $sql;
     $q = mysqli_query($conn,$sql) or die("Error in query");
    
   if($q)
 {
     echo "data Inserted";
-    header('Location:login.php');
+    // header('Location:single-product.php?id=<?php echo $pro_id ?>&cat=clothing');
+   
 
 }
 else 
@@ -301,7 +302,7 @@ else
     echo "Error";
 }
 }
-}
+
 ?>
  <!--================ start footer Area  =================-->
  <footer class="footer-area section_gap">

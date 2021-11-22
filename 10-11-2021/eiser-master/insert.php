@@ -293,7 +293,8 @@ if(isset($_POST['insert']))
   if($q)
 {
     echo "data Inserted";
-    // header('Location:single-product.php?id=<?php echo $pro_id ?>&cat=clothing');
+    header('Location:login.php');
+    
    
 
 }

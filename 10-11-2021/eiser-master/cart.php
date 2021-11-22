@@ -239,9 +239,80 @@
                 </tr>
               </thead>
               <tbody>
+
+              <!-- fetch cart details from database -->
+                <?php
+                   include 'main.php';
+                   $sql = "SELECT * from cart";
+                   
+                   $query = mysqli_query($conn,$sql) or die("Error in query");
+       
+                  while( $row = mysqli_fetch_array($query)){
+                       $id = $row['id'];
+                       $img = $row['img'];
+                       $name=$row['name'];
+                        $price = $row['price'];
+                        $price = $row['price'];
+                        $quantity =$row['quantity'];
+                        $total = $price * $quantity;
+
+                  
+                ?>
                 <tr>
                   <td>
                     <div class="media">
+                      <div class="d-flex">
+                        
+                        <img src="<?php echo $img ?>" height=110 width=120>
+                          
+
+                      </div>
+                      <div class="media-body">
+                        <p><?php echo $name ?></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <h5>₹ <?php echo $price?></h5>
+                  </td>
+                  <td>
+                    <div class="product_count">
+                      <input
+                        type="text"
+                        name="qty"
+                        id="<?php echo $id ?>"
+                        maxlength="12"
+                        value="<?php echo $quantity ?>"
+                        title="Quantity:"
+                        class="input-text qty"
+                      />
+                      <button
+                        onclick="var result = document.getElementById('<?php echo $id ?>'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                        class="increase items-count"
+                        type="button"
+                      >
+                        <i class="lnr lnr-chevron-up"></i>
+                      </button>
+                      <button
+                        onclick="var result = document.getElementById('<?php echo $id ?>'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                        class="reduced items-count"
+                        type="button"
+                      >
+                        <i class="lnr lnr-chevron-down"></i>
+                      </button>
+                    </div>
+                  </td>
+                  <td>
+                    <h5>₹ <?php echo $total ?></h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+
+                  <?php
+                  }
+                  ?>
+                    <!-- <div class="media">
                       <div class="d-flex">
                         <img
                           src="img/product/single-product/cart-1.jpg"
@@ -334,55 +405,7 @@
                   <td>
                     <h5>$720.00</h5>
                   </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="media">
-                      <div class="d-flex">
-                        <img
-                          src="img/product/single-product/cart-1.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div class="media-body">
-                        <p>Minimalistic shop for multipurpose use</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$360.00</h5>
-                  </td>
-                  <td>
-                    <div class="product_count">
-                      <input
-                        type="text"
-                        name="qty"
-                        id="sst"
-                        maxlength="12"
-                        value="1"
-                        title="Quantity:"
-                        class="input-text qty"
-                      />
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                        class="increase items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-up"></i>
-                      </button>
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                        class="reduced items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-down"></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$720.00</h5>
-                  </td>
-                </tr>
+                </tr> -->
                 <tr class="bottom_button">
                   <td>
                     <a class="gray_btn" href="#">Update Cart</a>
@@ -417,16 +440,16 @@
                     <div class="shipping_box">
                       <ul class="list">
                         <li>
-                          <a href="#">Flat Rate: $5.00</a>
+                          <a href="#">Flat Rate: ₹ 45.00</a>
                         </li>
                         <li>
                           <a href="#">Free Shipping</a>
                         </li>
                         <li>
-                          <a href="#">Flat Rate: $10.00</a>
+                          <a href="#">Flat Rate: ₹ 30.00</a>
                         </li>
                         <li class="active">
-                          <a href="#">Local Delivery: $2.00</a>
+                          <a href="#">Local Delivery: ₹ 20.00</a>
                         </li>
                       </ul>
                       <h6>
@@ -434,13 +457,15 @@
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
                       </h6>
                       <select class="shipping_select">
-                        <option value="1">Bangladesh</option>
-                        <option value="2">India</option>
-                        <option value="4">Pakistan</option>
+                        <option value="1">Select State</option>
+                        <option value="2">Rajasthan</option>
+                        <option value="4">Delhi</option>
+                        <option value="4">Gujrat</option>
+                        
                       </select>
                       <select class="shipping_select">
-                        <option value="1">Select a State</option>
-                        <option value="2">Select a State</option>
+                        <option value="1">Select City</option>
+                        <option value="2"></option>
                         <option value="4">Select a State</option>
                       </select>
                       <input type="text" placeholder="Postcode/Zipcode" />
@@ -462,7 +487,7 @@
               </tbody>
             </table>
           </div>
-        </div>
+        </div>  
       </div>
     </section>
     <!--================End Cart Area =================-->

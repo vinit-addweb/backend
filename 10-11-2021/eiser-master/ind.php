@@ -40,7 +40,7 @@
             <div class="float-right">
               <ul class="right_side">
                 <li>
-                  <a href="cart.html">
+                  <a href="cart.php">
                     gift card
                   </a>
                 </li>
@@ -95,7 +95,7 @@
                         <a class="nav-link" href="checkout.html">Product Checkout</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="cart.html">Shopping Cart</a>
+                        <a class="nav-link" href="cart.php">Shopping Cart</a>
                       </li>
                     </ul>
                   </li>

@@ -190,6 +190,7 @@ $sql=mysqli_query($conn,"select * from accessories") or die("Error in query");
     <div class="cat">
     <div class="container-fluid">
         <div class="row">
+          
           <div class="col a">
             <div class="card card1">
                 <a href="mandash.php?cat=<?php echo "accessories";?>">

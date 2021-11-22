@@ -254,8 +254,8 @@ $_SESSION['cat']=$cat;
     include 'main.php';
 
     $semail = $_SESSION['email'];
-    $query = mysqli_query($conn,"SELECT * from $cat") or die("Error in query");
     
+    $query = mysqli_query($conn,"SELECT * from $cat") or die("Error in query");
     $sql ="select Name from seller where Email ='$semail'";
     
     $q1 = mysqli_query($conn,$sql); 

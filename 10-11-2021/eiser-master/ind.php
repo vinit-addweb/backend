@@ -1,3 +1,9 @@
+<?php
+ include 'main.php';
+ error_reporting(0);
+ 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,13 +135,18 @@
                 </ul>
               </div>
 
+
+              
               <div class="col-lg-5 pr-0">
                 <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-search" aria-hidden="true"></i>
-                    </a>
-                  </li>
+                   <li class="nav-item">
+                  <form class="d-flex" action="category.php" method="get"   > <input class="form-control mr-1 mt-3" type="search"
+                    name="str" placeholder="Search" aria-label="Search">
+                    <input class="btn btn-outline-success mt-3" type="submit" value="Search" >
+                   </form>
+                  </li> 
+
+                
 
                   <li class="nav-item">
                     <a href="#" class="icons">
@@ -149,11 +160,11 @@
                     </a>
                   </li>
 
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a href="#" class="icons">
                       <i class="ti-heart" aria-hidden="true"></i>
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </div>
@@ -163,6 +174,16 @@
     </div>
   </header>
   <!--================Header Menu Area =================-->
+
+
+
+
+
+
+
+
+
+
 
   <!--================Home Banner Area =================-->
   <section class="home_banner_area mb-40">
@@ -245,7 +266,7 @@
 
       <?php
 
-       include 'main.php';
+      
        session_start();
 
        $sql = "select * from clothing where status = 1";

@@ -1,3 +1,9 @@
+<?php
+include 'main.php';
+ob_start();
+error_reporting(0);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -243,6 +249,33 @@
               </div>
             </div>
             
+<!-- ==============search==================== -->
+            <?php
+
+
+              $str = mysqli_real_escape_string($conn,$_GET['str']);
+
+              $sql = "select * from accessories where pro_name like '%$str%' or pro_description like '%$str%' ";
+             $res = mysqli_query($conn,$sql);
+             
+            
+       while($row1=mysqli_fetch_array($res))
+       {
+         $pro_id=$row1["pro_id"];
+         //echo $pro_name;
+         $pro_name=$row1["pro_name"];
+         $pro_image=$row1["pro_img"];
+         $pro_price=$row1["pro_price"];
+          
+         
+       
+   
+      //  echo $pro_name;
+
+            ?>
+
+
+
             <div class="latest_product_inner">
               <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -250,8 +283,7 @@
                     <div class="product-img">
                       <img
                         class="card-img"
-                        src="img/product/inspired-product/i1.jpg"
-                        alt=""
+                       src="<?php echo $pro_image ?>"width=auto height="254"
                       />
                       <div class="p_icon">
                         <a href="#">
@@ -267,17 +299,22 @@
                     </div>
                     <div class="product-btm">
                       <a href="#" class="d-block">
-                        <h4>Latest men’s sneaker</h4>
+                      <h4><?php echo substr($pro_name, 0, 20);?>....</h4>
                       </a>
                       <div class="mt-3">
-                        <span class="mr-4">$25.00</span>
-                        <del>$35.00</del>
+                      <span class="mr-4"><?php echo '₹'.$pro_price?></span>
+                        <!-- <del>$35.00</del> -->
                       </div>
                     </div>
                   </div>
                 </div>
+       </div>
+ <?php
 
-                <div class="col-lg-4 col-md-6">
+}
+
+?>
+                <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-product">
                     <div class="product-img">
                       <img
@@ -307,41 +344,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
 
-                <div class="col-lg-4 col-md-6">
-                  <div class="single-product">
-                    <div class="product-img">
-                      <img
-                        class="card-img"
-                        src="img/product/inspired-product/i3.jpg"
-                        alt=""
-                      />
-                      <div class="p_icon">
-                        <a href="#">
-                          <i class="ti-eye"></i>
-                        </a>
-                        <a href="#">
-                          <i class="ti-heart"></i>
-                        </a>
-                        <a href="#">
-                          <i class="ti-shopping-cart"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="product-btm">
-                      <a href="#" class="d-block">
-                        <h4>Latest men’s sneaker</h4>
-                      </a>
-                      <div class="mt-3">
-                        <span class="mr-4">$25.00</span>
-                        <del>$35.00</del>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div class="col-lg-4 col-md-6">
+                <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-product">
                     <div class="product-img">
                       <img
@@ -531,9 +537,13 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>  -->
               </div>
             </div>
+
+
+
+            
           </div>
 
           <div class="col-lg-3">

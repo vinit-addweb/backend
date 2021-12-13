@@ -15,7 +15,12 @@ print ("<body>")
 try:
     cursor.execute("delete from pythonn  where id=%s" %(id))
     db.commit()
-    print("Data Deleted")
+    redirectURL = "http://localhost/backend/08-dec-2021/dashborad/loginn.html"
+    print('<html>')
+    print('<head>')
+    print('<meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
+    print('</head>')
+    print('</html>')
 except:
     
     db.rollback()

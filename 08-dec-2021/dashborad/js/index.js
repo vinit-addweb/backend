@@ -1,51 +1,5 @@
-<html>
-<head>
-    
-<title>Sign-Up </title>
 
-
-
-
-
-<link rel="stylesheet" href="style.css">
-
-    </head>
-    
-    <body>
-<div class="frm">
-<form method="get" action="insert.py" name="dash" onsubmit="return Formval()" style="border:1px solid #ccc">
-  <div class="container">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
-         
-    <label for="Id"><b>Id</b></label>
-    <input type="text" name="id" placeholder="Enter Id"  >
-        
-    <label for="name"><b>Name</b></label>
-    <input type="text" name="name" placeholder="Enter Name" >
-    
-    <label for="name"><b>Address</b></label>
-    <input type="text" name="address" placeholder="Enter Address" >
-    
-    <label for="mobile"><b>Mobile</b></label>
-    <input type="text" placeholder="Enter mobile" name="mobile" >
-        
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" >
-    <label for="password"><b>password</b></label>
-    <input type="text" name="psw" placeholder="Enter password"  >
-        
-    
-    <div class="clearfix">
-         
-      <button type="submit" class="signupbtn" value="Insert">Sign Up</button>
-    </div>
-  </div>
-</form>
-</div>
-<script>
-  function Formval() {
+    function Formval() {
         var id = document.forms["dash"]["id"];
         var name = document.forms["dash"]["name"];
         var email = document.forms["dash"]["email"];
@@ -129,7 +83,3 @@
   
         return true;
     }
-
-</script>
-    </body>
-</html>

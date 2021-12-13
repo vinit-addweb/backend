@@ -18,7 +18,13 @@ try:
     data=cursor.fetchall()
 
     if(data):
-        print('<a href="Dash.py">Login success</a>')
+        # print('<a href="Dash.py">Login success</a>')
+        redirectURL = "http://localhost/backend/08-dec-2021/dashborad/Dash.py"
+        print('<html>')
+        print('  <head>')
+        print('    <meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
+        print('  </head>')
+        print('</html>')
         # if (response.status == 200):
         # print ("Location:Dash.py")
     else:

@@ -28,7 +28,13 @@ try:
     cursor.execute("INSERT INTO pythonn (id,name, address, mobile, email,password) VALUES('%s','%s','%s','%s','%s','%s')" %(id,name,address,mobile,email,password))
     # Commit your changes in the database
     db.commit()
-    print("Data Inserted")
+    # print("Data Inserted")
+    redirectURL = "http://localhost/backend/08-dec-2021/dashborad/loginn.html"
+    print('<html>')
+    print('<head>')
+    print('<meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
+    print('</head>')
+    print('</html>')
 except:
     # Rollback in case there is any error
     db.rollback()

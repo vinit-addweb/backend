@@ -1,0 +1,70 @@
+.info{
+    text-align: center;
+    color: #57606f;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.temp{
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.tempmin_max{
+    text-align: center;
+    margin-top:0.3rem;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #57606f;
+}
+
+#weathercon{
+    height: 55%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size: 3em;
+}
+
+#weathercon .fas{
+    font-size: 6rem;
+    animation: fas-anime 3s linear infinite alternate;
+}
+@keyframes fas-anime {
+    from{
+        transform: scale(0.8);
+    }
+    to{
+        transform: scale(1.2);
+    }
+}
+@media(max-width: 600px){
+    .box{
+        width: 90vw;
+        height: 80vh;
+        
+    }
+    .wave{
+        top:85%
+    }
+    #weathercon{
+        font-size: 5em;
+    }
+    .info{
+        font-size: 1.5rem;
+    }
+}
+@media(max-height:500px){
+    .box{
+        height: 80vh;
+    }
+    .wave{
+        top:115%
+    }
+    body > span{
+        width: 100vw;
+        text-align: center;
+        color: grey;
+    }
+}

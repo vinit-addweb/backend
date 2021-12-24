@@ -250,35 +250,38 @@ error_reporting(0);
             </div>
             
 <!-- ==============search==================== -->
-            <?php
-
-
-              $str = mysqli_real_escape_string($conn,$_GET['str']);
-
-              $sql = "select * from accessories where pro_name like '%$str%' or pro_description like '%$str%' ";
-             $res = mysqli_query($conn,$sql);
-             
-            
-       while($row1=mysqli_fetch_array($res))
-       {
-         $pro_id=$row1["pro_id"];
-         //echo $pro_name;
-         $pro_name=$row1["pro_name"];
-         $pro_image=$row1["pro_img"];
-         $pro_price=$row1["pro_price"];
-          
-         
-       
-   
-      //  echo $pro_name;
-
-            ?>
+      
 
 
 
             <div class="latest_product_inner">
               <div class="row">
-                <div class="col-lg-4 col-md-6">
+             
+              <?php
+
+
+$str = mysqli_real_escape_string($conn,$_GET['str']);
+
+$sql = "select * from accessories where pro_name like '%$str%' or pro_description like '%$str%' ";
+$res = mysqli_query($conn,$sql);
+
+
+while($row1=mysqli_fetch_array($res))
+{
+$pro_id=$row1["pro_id"];
+//echo $pro_name;
+$pro_name=$row1["pro_name"];
+$pro_image=$row1["pro_img"];
+$pro_price=$row1["pro_price"];
+
+
+
+
+//  echo $pro_name;
+
+?>
+
+<div class="col-lg-4 col-md-6">
                   <div class="single-product">
                     <div class="product-img">
                       <img
@@ -305,15 +308,20 @@ error_reporting(0);
                       <span class="mr-4"><?php echo '₹'.$pro_price?></span>
                         <!-- <del>$35.00</del> -->
                       </div>
+                      
                     </div>
+   
                   </div>
+             
                 </div>
-       </div>
- <?php
+                <?php
 
 }
 
 ?>
+       </div>
+        
+ 
                 <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-product">
                     <div class="product-img">
